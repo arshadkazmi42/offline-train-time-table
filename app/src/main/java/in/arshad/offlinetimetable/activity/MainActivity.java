@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -29,8 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+//    @Bind(R.id.toolbar)
+//    Toolbar toolbar;
+
     @Bind(R.id.btSubmit)
-    Button btSubmit;
+    TextView btSubmit;
 
     @Bind(R.id.etSearch)
     EditText etSearch;
@@ -48,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mContext = this;
         dialog = new ProgressDialog(mContext);
 
+//        setSupportActionBar(toolbar);
+//        TextView tvToolbarTitle = (TextView) toolbar.findViewById(R.id.tvToolbarTitle);
+//        tvToolbarTitle.setText("Search Train");
+
         db = new DbHelper(this);
         try {
             db.openDataBase();
@@ -64,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (trainNumbers == null || trainNumbers.size() == 0) {
                 GlobalFunctions.toastShort(mContext, "No data found");
             } else if (trainNumbers.size() == 1) {
-                startScheduleActivity(trainNumbers.get(0));
+                String nameNumber = trainNumbers.get(0);
+                String number = nameNumber.substring(nameNumber.indexOf('(')+1, nameNumber.indexOf(')'));
+                startScheduleActivity(number);
             } else {
                 showTrainPopup(trainNumbers);
             }

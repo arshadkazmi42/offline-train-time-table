@@ -18,7 +18,7 @@
         android:paddingRight="5dp"
         >
 
-        <TextView
+        <in.arshad.offlinetimetable.util.widgets.MontLightTextView
             android:id="@+id/tvStationName"
             android:layout_width="0dp"
             android:layout_weight="3"
@@ -26,7 +26,7 @@
             android:text="Bangalore (SBC)"
             />
 
-        <TextView
+        <in.arshad.offlinetimetable.util.widgets.MontLightTextView
             android:id="@+id/tvArrivalTime"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -34,7 +34,7 @@
             android:text="10:00pm"
             />
 
-        <TextView
+        <in.arshad.offlinetimetable.util.widgets.MontLightTextView
             android:id="@+id/tvDepTime"
             android:layout_width="0dp"
             android:layout_weight="1"

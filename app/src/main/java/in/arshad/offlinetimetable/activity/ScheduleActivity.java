@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ import in.arshad.offlinetimetable.model.TimeTable;
 public class ScheduleActivity extends AppCompatActivity {
 
     private static final String TAG = ScheduleActivity.class.getSimpleName();
+
+//    @Bind(R.id.toolbar)
+//    Toolbar toolbar;
 
     @Bind(R.id.rvSchedule)
     RecyclerView rvSchedule;
@@ -51,6 +55,10 @@ public class ScheduleActivity extends AppCompatActivity {
         dialog = new ProgressDialog(mContext);
         db = new DbHelper(this);
 
+//        setSupportActionBar(toolbar);
+//        TextView tvToolbarTitle = (TextView) toolbar.findViewById(R.id.tvToolbarTitle);
+//        tvToolbarTitle.setText("Schedule");
+
         if(getIntent().hasExtra("trainNumber")) {
             trainNumber = getIntent().getExtras().getString("trainNumber");
         }
@@ -61,7 +69,11 @@ public class ScheduleActivity extends AppCompatActivity {
         adapter = new ScheduleAdapter(mContext, timeTable);
         rvSchedule.setAdapter(adapter);
 
-        populateProfile(timeTable.get(0));
+        if(timeTable.size() > 0) {
+            populateProfile(timeTable.get(0));
+        } else {
+            GlobalFunctions.toastShort(mContext, "Not Found");
+        }
     }
 
     private void populateProfile(TimeTable data){

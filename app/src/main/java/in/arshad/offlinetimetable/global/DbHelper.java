@@ -137,10 +137,12 @@ public class DbHelper extends SQLiteOpenHelper {
         List<TimeTable> timeTable = new ArrayList<>();
         try {
             String query = "SELECT * FROM " + TABLE_TIME_TABLE + " WHERE " + KEY_TRAIN_NO + " = '" + trainNumber + "'";
+            Log.e(TAG, query);
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery(query, null);
             if (cursor.moveToFirst()) {
                 do {
+                    Log.e(TAG, "has list");
                     TimeTable data = new TimeTable();
                     data.setId(1);
                     data.setTrainNo(cursor.getString(0));
@@ -156,6 +158,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     data.setDestStnCode(cursor.getString(10));
                     data.setDestStnName(cursor.getString(11));
                     timeTable.add(data);
+                    Log.e(TAG, cursor.getString(10));
                 } while (cursor.moveToNext());
             }
         } catch (SQLiteDatabaseLockedException e) {
