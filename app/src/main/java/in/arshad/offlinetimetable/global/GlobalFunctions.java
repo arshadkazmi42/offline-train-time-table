@@ -17,6 +17,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -398,6 +402,26 @@ public class GlobalFunctions {
 
     public static String trim(String input){
         return input.replaceAll("\\s+","");
+    }
+
+    /**
+     * Setup AdUnit
+     */
+    public static void setupAdUnit(Context mContext, AdView mAdView){
+        // Initialize the Mobile Ads SDK.
+        MobileAds.initialize(mContext, mContext.getResources().getString(R.string.addMobAppId));
+
+        // Create an ad request. Check your logcat output for the hashed device ID to
+        // get test ads on a physical device. e.g.
+        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
+        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice("83DB95760D5C2795CA41FA5E209408DB")
+                .build();
+//        mAdView.setAdSize(AdSize.BANNER);
+//        mAdView.setAdUnitId(mContext.getResources().getString(R.string.bannerBottomUnitId));
+
+        // Start loading the ad in the background.
+        mAdView.loadAd(adRequest);
     }
 
 

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Train Schedule</string>
+
+    <string name="addMobAppId">ca-app-pub-3587158661072906~5513481656</string>
+    <string name="bannerBottomId">ca-app-pub-3587158661072906/6990214851</string>
 </resources>

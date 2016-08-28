@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,9 @@ public class ScheduleActivity extends AppCompatActivity {
     @Bind(R.id.tvSourceDest)
     TextView tvSourceDest;
 
+    @Bind(R.id.adView)
+    AdView mAdView;
+
     private Context mContext;
     private ProgressDialog dialog;
     private DbHelper db;
@@ -58,6 +63,7 @@ public class ScheduleActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
 //        TextView tvToolbarTitle = (TextView) toolbar.findViewById(R.id.tvToolbarTitle);
 //        tvToolbarTitle.setText("Schedule");
+        GlobalFunctions.setupAdUnit(mContext, mAdView);
 
         if(getIntent().hasExtra("trainNumber")) {
             trainNumber = getIntent().getExtras().getString("trainNumber");
