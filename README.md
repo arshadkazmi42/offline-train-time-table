@@ -1,7 +1,7 @@
 <p align="center"><a href="https://github.com/arshadkazmi42/offline-train-time-table"><img src="screenshots/logo.png" width="100"/></a></p>
 
 <h2 align="center"><b>Offline Train Time Table</b></h2>
-<h4 align="center">Get Indian railways train time table withot internet.</h4>
+<h4 align="center">Get Indian railways train time table without internet.</h4>
 
 <p align="center"><a href="https://apps.kaspat.com/TrainTimeTable/"><img src="http://www.kaspat.com/apps/images/download.png" width="250"/></a></p>
 
